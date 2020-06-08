@@ -68,6 +68,13 @@ Jw = np.zeros((20,))
 for i in range(0,20):
     Jw[i] = list([-5,5,-1,1])[random.randint(0,3)] # each is either strongly P/NP or slightly P/NP, numbers were chosen st PvsNP is the driving folder as opposed to interacitons bw AAs
 
+colors = []
+for i in range(len(A)):
+    if Jw[i] < 0:
+        colors.append('r')
+    else:
+        colors.append('b')
+
 #Are A1 and A2 nearest neighours?
 def NN(A1, A2):
     areNN=False
@@ -182,7 +189,7 @@ try:
                     dz = np.linspace(newAxyz[i-1][2], newAxyz[i][2], 1000)
                     ax.scatter(dx,dy,dz,c='k')
 
-                ax.scatter([b[0] for b in newAxyz],[b[1] for b in newAxyz],[b[2] for b in newAxyz],c='r')
+                ax.scatter([b[0] for b in newAxyz],[b[1] for b in newAxyz],[b[2] for b in newAxyz],c=colors)
                 graphtext = "Fold: {}, T={}".format(nallowed, T)
                 ax.text2D(0.2, 0.9, graphtext, horizontalalignment='center', verticalalignment='center', transform = ax.transAxes)
 
